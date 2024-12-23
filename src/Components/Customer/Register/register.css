@@ -2,8 +2,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
     background-color: rgb(17, 9, 9);
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(199, 213, 225);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .Register{
@@ -38,4 +46,10 @@
     border: 1px solid black;
     background-color: aquamarine;
     cursor: pointer;
+}
+
+
+.forgetPassword{
+    cursor: pointer;
+    color: brown;
 }

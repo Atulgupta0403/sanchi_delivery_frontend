@@ -1,3 +1,11 @@
+.menu{
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: black;
+
+}
+
 .menu-container{
     width: 100%;
     display: flex;
@@ -6,21 +14,23 @@
     padding: 20px;
     border: 3px solid black;
     border-radius: 10px;
+    background-color: rgb(47, 45, 45);
 }
 
 .menu h1{
     text-align: center;
-    text-decoration: underline;
     text-transform: uppercase;
     margin: 10px;
+    color: aliceblue;
 }
 
 
 .menu-items{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: rgb(120, 158, 158);
+    gap: 20px;
+    /* justify-content: space-between; */
+    background-color: rgb(69, 74, 74);
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
@@ -29,12 +39,22 @@
 .menu-items p{
     font-size: 18px;
     text-transform: capitalize;
+    background-color: rgb(69, 74, 74);
 }
-
 
 .menu-items img{
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 20%;
+}
+
+.menu-description{
+    display: flex;
+    flex-direction: column;
+}
+
+.description p{
+    font-size: 14px;
+    color: rgb(205, 210, 215);
 }

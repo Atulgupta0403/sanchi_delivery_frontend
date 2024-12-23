@@ -1,0 +1,52 @@
+.item-main{
+    width: 100vw;
+    padding: 5px;
+    height: 100vh;
+    background-color: black;
+}
+
+.item-container{
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.item-container .image{
+    width: 100%;
+    height: 30%;
+    object-fit: cover;
+    border-radius: 10px;
+    
+}
+
+.item-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.item-container .description{
+    height: 50%;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+}
+
+.buy{
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buy button{
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: aquamarine;
+    cursor: pointer;
+    background-color: antiquewhite;
+}

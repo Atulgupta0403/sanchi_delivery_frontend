@@ -21,9 +21,15 @@ const login = () => {
         event.preventDefault();
         axios.post("https://foody.atulgupta.tech/login" , formData) 
         .then((Response) => {
-            console.log(Response.data)
-            authToken(Response.data.message);
-            // window.location.href = "/home";
+            // console.log(Response.data)
+            if(Response.status === 200){
+
+                authToken(Response.data.message);
+                window.location.href = "/home";
+            }
+            else{
+                alert(Response.data.message)
+            }
         })
         .catch((err) => {
             console.log(err)
@@ -38,6 +44,7 @@ const login = () => {
 
     return (
         <div className='login-container'>
+            <h1>Login</h1>
             <div className="login">
                 <form action="/login" method="post" onSubmit={loginHandler}>
                     <input type="email" placeholder='Email' name='email' value={formData.email} onChange={handleInputChange}/>

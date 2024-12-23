@@ -11,8 +11,6 @@ const home = () => {
     const [restaurants, setRestaurants] = useState([]);
     const { authHeader } = location.state || "";
 
-    console.log("token = " + authHeader)
-
     useEffect(() => {
         axios.get("https://foody.atulgupta.tech/restaurant", {
             headers: {
@@ -20,8 +18,8 @@ const home = () => {
             }
         })
             .then((response) => {
-                console.log(response.data)
-                if(response.data.message === "UnAuthorized"){
+                // console.log(response.data)
+                if (response.data.message === "UnAuthorized") {
                     window.location.href = "/login"
                 }
                 setRestaurants(response.data.message)
@@ -36,9 +34,6 @@ const home = () => {
         navigate('/menu', { state: { restaurant } });
     };
 
-    console.log(restaurants)
-
-
     return (
         <div className='home-container'>
             <div className="home">
@@ -47,10 +42,18 @@ const home = () => {
                     {restaurants.map((restaurant) => {
                         return <div className="home-items" key={restaurant._id} onClick={() => (handleClick(restaurant))}>
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9oBl8oMj8unCKsHx9WuzVKgxc34HJnei-Qw&s" alt="" />
-                            <h3>{restaurant.restaurantName}</h3>
-                            <p>Location: {restaurant.location}</p>
-                            <p>Cuisine: {restaurant.cuisine}</p>
-                            <p>Rating: {restaurant.rating}</p>
+                            <div className="home-details">
+                                <div className="home-name">
+
+                                    <h3>{restaurant.restaurantName}</h3>
+                                    <p className='rating'>{restaurant.rating}</p>
+                                </div>
+                                <div className="location">
+
+                                    <p>{restaurant.cuisine}</p>
+                                    <p>{restaurant.location}</p>
+                                </div>
+                            </div>
                         </div>
                     })}
                 </div>
