@@ -9,18 +9,19 @@ const home = () => {
 
 
     const [restaurants, setRestaurants] = useState([]);
-    const { authHeader } = location.state || "";
+    const token = localStorage.getItem("token");
+    console.log("token ", token);
 
     useEffect(() => {
-        axios.get("https://foody.atulgupta.tech/restaurant", {
+        axios.get("http://localhost:8080/restaurant", {
             headers: {
-                'Authorization': authHeader
+                "Authorization": `${token}`
             }
         })
             .then((response) => {
                 // console.log(response.data)
                 if (response.data.message === "UnAuthorized") {
-                    window.location.href = "/login"
+                    navigate("/login");
                 }
                 setRestaurants(response.data.message)
             })

@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import "../Menu/menu.css"
 
 
-const menu = (props) => {
+const menu = () => {
 
     const navigate = useNavigate()
     const location = useLocation();
@@ -14,7 +14,7 @@ const menu = (props) => {
     const { restaurant } = location.state || {};
 
     useEffect(() => {
-        axios.get("https://foody.atulgupta.tech/menu", { params: { ids: restaurant.menu } })
+        axios.get("http://localhost:8080/menu", { params: { ids: restaurant.menu }  , headers: { 'Authorization': `${localStorage.getItem("token")}` } })
             .then((Response) => {
                 console.log(Response.data.message)
                 // const items = Response.data.message;

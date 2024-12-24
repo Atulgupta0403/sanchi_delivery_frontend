@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "../Login/login.css"
 import axios from 'axios'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 const login = () => {
 
@@ -19,12 +19,13 @@ const login = () => {
 
     const loginHandler = (event) => {
         event.preventDefault();
-        axios.post("https://foody.atulgupta.tech/login" , formData) 
+        axios.post("http://localhost:8080/login" , formData) 
         .then((Response) => {
             // console.log(Response.data)
             if(Response.status === 200){
-
-                authToken(Response.data.message);
+                const token = Response.data.message;
+                localStorage.setItem("token" , token);
+                console.log(Response.data)
                 window.location.href = "/home";
             }
             else{
@@ -51,6 +52,11 @@ const login = () => {
                     <input type="password" placeholder='Password' name='password' value={formData.password} onChange={handleInputChange}/>
                     <button type='submit'>Submit</button>
                 </form>
+            </div>
+
+            <div className="login-register">
+                <span>Don't have an account?</span>
+                <Link to="/">SignUp</Link>
             </div>
         </div>
     )

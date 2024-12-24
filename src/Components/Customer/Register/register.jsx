@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "../Register/register.css"
 import axios from "axios"
+import { Link } from 'react-router-dom'
 
 const register = () => {
 
@@ -19,7 +20,7 @@ const register = () => {
 
     const registerHandler = (event) => {
         event.preventDefault()
-        axios.post("https://foody.atulgupta.tech/signup" , formData)
+        axios.post("foody.atulgupta.tech/signup" , formData)
             .then((response) => {
                 console.log(response.status)
                 if(response.status === 200){
@@ -43,7 +44,7 @@ const register = () => {
 
     return (
         <div className="register-container">
-            <h1>SignUp</h1>
+            <h1>SignUp as User</h1>
             <div className='Register'>
                 <form action="/signup" method="post" onSubmit={registerHandler}>
                     <input type="text" placeholder='Username' name='username' value={formData.username} onChange={handleInputChange} />
@@ -53,6 +54,11 @@ const register = () => {
                     <span className='forgetPassword' onClick={handleForgetPassword}>Forget password</span>
                     <button type='submit'>SignUp</button>
                 </form>
+            </div>
+
+            <div className="signup">
+                <span>Already have an account?</span>
+                <Link to="/login">Login</Link>
             </div>
         </div>
     )

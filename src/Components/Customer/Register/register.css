@@ -53,3 +53,20 @@ h1{
     cursor: pointer;
     color: brown;
 }
+
+.signup{
+    margin-top: 20px;
+    display:   flex;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.signup span{
+    color: aliceblue;
+}
+
+.signup a{
+    color: aquamarine;
+    text-decoration: none;
+    cursor: pointer;
+}

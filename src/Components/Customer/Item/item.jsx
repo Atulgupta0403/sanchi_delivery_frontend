@@ -15,10 +15,10 @@ const item = () => {
                     <img src="https://t3.ftcdn.net/jpg/02/52/38/80/360_F_252388016_KjPnB9vglSCuUJAumCDNbmMzGdzPAucK.jpg" alt="" />
                 </div>
                 <div className="description">
-                    <p>Name = {item.itemName}</p>
-                    <p>price = {item.price}</p>
-                    <p>category = {item.category}</p>
-                    <p>description = {item.description}</p>
+                    <p>{item.itemName}</p>
+                    <p>{item.price}</p>
+                    <p>{item.category}</p>
+                    <p>{item.description}</p>
 
                 </div>
                 <div className="buy">
