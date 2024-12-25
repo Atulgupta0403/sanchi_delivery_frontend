@@ -10,7 +10,7 @@ const home = () => {
 
     const [restaurants, setRestaurants] = useState([]);
     const token = localStorage.getItem("token");
-    console.log("token ", token);
+    // console.log("token ", token);
 
     useEffect(() => {
         axios.get("http://localhost:8080/restaurant", {

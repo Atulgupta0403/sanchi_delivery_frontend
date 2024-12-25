@@ -21,12 +21,16 @@ const login = () => {
         event.preventDefault();
         axios.post("http://localhost:8080/login" , formData) 
         .then((Response) => {
-            // console.log(Response.data)
             if(Response.status === 200){
                 const token = Response.data.message;
-                localStorage.setItem("token" , token);
                 console.log(Response.data)
-                window.location.href = "/home";
+                localStorage.setItem("token" , token);
+                if(Response.data.accountType === "Restaurant-owner"){
+                    navigate("/addRestaurant")
+                }
+                else{
+                    navigate("/home")
+                }
             }
             else{
                 alert(Response.data.message)
@@ -56,7 +60,7 @@ const login = () => {
 
             <div className="login-register">
                 <span>Don't have an account?</span>
-                <Link to="/">SignUp</Link>
+                <Link to="/register">SignUp</Link>
             </div>
         </div>
     )

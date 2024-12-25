@@ -1,0 +1,48 @@
+.rest{
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rest h2{
+    color: aliceblue;
+}
+
+.rest-container{
+    padding: 20px;
+    border: 2px solid rgb(48, 45, 45);
+    border-radius: 10px;
+
+}
+
+.rest-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.rest-container input{
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: aliceblue;
+    border: 1px solid black;
+    background-color: rgb(52, 46, 46);
+}
+
+
+.rest-container button{
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: aquamarine;
+    cursor: pointer;
+    font-weight: 600;
+}

@@ -1,0 +1,37 @@
+.first-container{
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.first{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    border: 2px solid rgb(75, 71, 71);
+    gap: 10px;
+    border-radius: 10px;
+    background-color: rgb(21, 21, 21);
+}
+
+h1{
+    color: white;
+}
+
+h2{
+    border: 1px solid black;
+    color: white;
+    background-color: rgb(30, 46, 47);
+    border-radius: 10px;
+    padding: 10px 15px ;
+    cursor: pointer;
+
+}

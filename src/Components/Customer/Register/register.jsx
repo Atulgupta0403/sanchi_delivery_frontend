@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
 import "../Register/register.css"
 import axios from "axios"
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const register = () => {
+
+    const location = useLocation()
+    const accountType = location.state;
+
+    console.log(accountType)
+
 
     const [formData , setFormData] = useState({
         username : "",
         email : "",
         password : "",
-        address : ""
+        address : "",
+        accountType : accountType
     })
 
     const handleInputChange = (event) => {
@@ -20,7 +27,7 @@ const register = () => {
 
     const registerHandler = (event) => {
         event.preventDefault()
-        axios.post("foody.atulgupta.tech/signup" , formData)
+        axios.post("http://localhost:8080/signup" , formData)
             .then((response) => {
                 console.log(response.status)
                 if(response.status === 200){
@@ -37,6 +44,8 @@ const register = () => {
             })
     }
 
+    console.log(formData)
+
     const handleForgetPassword = () =>{
         window.location.href = "/password/reset"
         console.log("handleForgetpassord")
@@ -44,7 +53,7 @@ const register = () => {
 
     return (
         <div className="register-container">
-            <h1>SignUp as User</h1>
+            <h1>SignUp as {accountType}</h1>
             <div className='Register'>
                 <form action="/signup" method="post" onSubmit={registerHandler}>
                     <input type="text" placeholder='Username' name='username' value={formData.username} onChange={handleInputChange} />
