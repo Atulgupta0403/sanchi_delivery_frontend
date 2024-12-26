@@ -35,3 +35,22 @@ h2{
     cursor: pointer;
 
 }
+
+.first-login{
+    margin-top: 20px;
+    display:   flex;
+    gap: 5px;
+    font-size: 14px;
+}
+
+
+.first-login span{
+    color: aliceblue;
+}
+
+
+.first-login a{
+    color: aquamarine;
+    text-decoration: none;
+    cursor: pointer;
+}

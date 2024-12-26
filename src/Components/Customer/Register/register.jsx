@@ -8,7 +8,7 @@ const register = () => {
     const location = useLocation()
     const accountType = location.state;
 
-    console.log(accountType)
+    // console.log(accountType)
 
 
     const [formData , setFormData] = useState({
@@ -44,12 +44,40 @@ const register = () => {
             })
     }
 
-    console.log(formData)
+    
 
     const handleForgetPassword = () =>{
         window.location.href = "/password/reset"
         console.log("handleForgetpassord")
     } 
+    const [suggestions, setSuggestions] = useState([]);
+
+    const fetchSuggestions = async (input) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/getSuggestion/${input}`);
+            setSuggestions(response.data);
+        } catch (error) {
+            console.error("Error fetching suggestions:", error);
+        }
+    };
+
+    const handleAddressChange = (event) => {
+        handleInputChange(event);
+        const query = event.target.value;
+        if (query.length > 0) {
+            fetchSuggestions(query);
+        } else {
+            setSuggestions([]);
+        }
+    };
+
+    // const itemHandler((item) => {
+    //     console.log(item)
+    // })
+
+    console.log(formData)
+
+
 
     return (
         <div className="register-container">
@@ -59,7 +87,14 @@ const register = () => {
                     <input type="text" placeholder='Username' name='username' value={formData.username} onChange={handleInputChange} />
                     <input type="email" placeholder='Email' name='email' value={formData.email} onChange={handleInputChange}/>
                     <input type="password" placeholder='Password' name='password' value={formData.password} onChange={handleInputChange}/>
-                    <input type="text" placeholder='Address' name='address' value={formData.address} onChange={handleInputChange}/>
+                    <input type="text" placeholder='Address' name='address' value={formData.address} onChange={(e) => { handleInputChange(e); handleAddressChange(e); }}/>
+                    {suggestions.message?.length > 0 && (
+                        <div className="suggestions" >
+                            {suggestions.message.map((suggestion, index) => (
+                                <span key={index} className="suggestion-item" onClick={() => setFormData({ ...formData, address: suggestion })}>{suggestion}</span>
+                            ))}
+                        </div>
+                    )}
                     <span className='forgetPassword' onClick={handleForgetPassword}>Forget password</span>
                     <button type='submit'>SignUp</button>
                 </form>

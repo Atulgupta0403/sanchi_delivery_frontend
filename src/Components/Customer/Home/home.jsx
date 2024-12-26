@@ -42,7 +42,7 @@ const home = () => {
                 <div className="home-restaurant">
                     {restaurants.map((restaurant) => {
                         return <div className="home-items" key={restaurant._id} onClick={() => (handleClick(restaurant))}>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9oBl8oMj8unCKsHx9WuzVKgxc34HJnei-Qw&s" alt="" />
+                            <img src={restaurant.image} alt="" />
                             <div className="home-details">
                                 <div className="home-name">
 

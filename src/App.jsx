@@ -19,6 +19,7 @@ const LiveTracking = React.lazy(() => import("./Components/Customer/LiveTracking
 
 const AddRestaurant = React.lazy(() => import("./Components/Restaurant/AddRestaurant/addRestaurant"))
 const AddMenu = React.lazy(() => import("./Components/Restaurant/AddMenu/addMenu"))
+const SocketIo = React.lazy(() => import("./Components/Restaurant/Socketio/socketIo"))
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
 
           <Route element={<AddRestaurant />} path='/addRestaurant' />
           <Route element={<AddMenu />} path='/addMenu' />
+          <Route element={<SocketIo />} path='/socketIo' />
 
         </Routes>
       </Router>
