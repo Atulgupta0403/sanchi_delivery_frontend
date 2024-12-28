@@ -11,9 +11,9 @@ const addRestaurant = () => {
 
     const [formData, setFormData] = useState({
         restaurantName: "",
-        location: "",
         cuisine: "",
-        image: ""
+        image: "",
+        location: "",
     })
 
     const inputHandle = (event) => {
@@ -53,6 +53,7 @@ const addRestaurant = () => {
     }
 
     const handleAddressChange = (event) => {
+        console.log(event)
         inputHandle(event)
         const query = event.target.value;
         if (query.length > 0) {
@@ -62,19 +63,22 @@ const addRestaurant = () => {
         }
     }
 
+
+    console.log(formData)
+
     return (
         <div className='rest'>
-            <h2>Restaurant Details</h2>
+            <h1>Restaurant Details</h1>
             <div className="rest-container">
                 <form onSubmit={addRestaurantHandler}>
                     <input type="text" placeholder='Restaurant Name' name='restaurantName' onChange={inputHandle} />
                     <input type="text" placeholder='Restaurant Cuisine' name='cuisine' onChange={inputHandle} />
                     <input type="text" placeholder='Restaurant Image Url' name='image' onChange={inputHandle} />
-                    <input type="text" placeholder='Restaurant Location' name='location' onChange={(e) => {inputHandle(e) ; handleAddressChange(e);}} />
+                    <input type="text" placeholder='Restaurant Location' value={formData.location} name='location' onChange={(e) => { inputHandle(e) ; handleAddressChange(e); }} />
                     {suggestions.message?.length > 0 && (
                         <div className="suggestions" >
                             {suggestions.message.map((suggestion, index) => (
-                                <span key={index} className="suggestion-item" onClick={() => setFormData({ ...formData, address: suggestion })}>{suggestion}</span>
+                                <span key={index} className="suggestion-item" onClick={() => setFormData({ ...formData, location: suggestion })}>{suggestion}</span>
                             ))}
                         </div>
                     )}

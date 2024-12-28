@@ -42,11 +42,6 @@ const login = () => {
         })
     }
 
-    const authToken = (authHeader) => {
-        navigate("/home" , {state : {authHeader}})
-    }
-
-
     return (
         <div className='login-container'>
             <h1>Login</h1>

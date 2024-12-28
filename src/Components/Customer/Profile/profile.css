@@ -1,0 +1,90 @@
+.profile-main{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    min-height: 100vh;
+}
+
+.profile-up{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+    background-color: rgb(35, 34, 33);
+    justify-content: space-around;
+    color: aliceblue;
+}
+
+.profile-up .image{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
+
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.profile-up p{
+    font-size: 22px;
+    font-weight: 600;
+
+}
+
+.profile-middle{
+    min-height: 35vh;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.profile-middle .bookmarks,.orders{
+    background-color: #264653;
+    color: rgb(225, 218, 218);
+    padding: 10px;
+    border-radius: 2px;display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-middle p{
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+.bookmark{
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    /* background-color: aqua; */
+    gap: 10px;
+}
+
+
+.bookmark img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+
+.profile-down{
+    height: 25vh;
+    padding: 20px;
+    color: rgb(245, 31, 31);
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+

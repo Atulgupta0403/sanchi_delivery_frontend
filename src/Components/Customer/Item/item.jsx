@@ -1,28 +1,76 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import "../Item/item.css"
+import axios from 'axios';
 
 const item = () => {
 
     const location = useLocation();
-    const { item } = location.state;
-    console.log(item)
+    const token = localStorage.getItem("token")
+
+    const id = location.state;
+
+    const [items , setItems] = useState([]);
+    const [clickBookmark , setClickBookmark] = useState("Add Bookmark")
+    
+
+    useEffect(() => {
+        axios.get(`http://localhost:8080/item/${id}`, {
+            headers: {
+                "Authorization": `${token}`
+            }
+        })
+            .then((response) => {
+                setItems(response.data.message)
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    },[])
+
+
+
+    const BookMark = async (Itemid) => {
+        console.log(Itemid)
+        axios.post("http://localhost:8080/bookmark", { Itemid, Itemid }, {
+            headers: { Authorization: `${token}` }
+        })
+            .then((response) => {
+                if(response.status === 200){
+                    setClickBookmark(response.data.show)
+                    alert(response.data.message);
+                    // console.log(response.data)
+                }
+                else{
+                    alert(response.data.message)
+                }
+            })
+            .catch((error) => {
+                alert("Internal Server error")
+                console.log(error)
+            })
+    }
 
     return (
         <div className='item-main'>
             <div className="item-container">
                 <div className="image">
-                    <img src="https://t3.ftcdn.net/jpg/02/52/38/80/360_F_252388016_KjPnB9vglSCuUJAumCDNbmMzGdzPAucK.jpg" alt="" />
+                    <img src={items.image} alt="" />
                 </div>
                 <div className="description">
-                    <p>{item.itemName}</p>
-                    <p>{item.price}</p>
-                    <p>{item.category}</p>
-                    <p>{item.description}</p>
+                    <div className="up">
 
+                        <p className='para name'>{items.itemName}</p>
+                        <p className='para price'>₹ {items.price}</p>
+                    </div>
+                    <div className="down">
+                        <p className='para category'>{items.category}</p>
+                        <p className='para desc'>{items.description}</p>
+                    </div>
                 </div>
                 <div className="buy">
-                    <button>Bookmark</button>
+                    <button onClick={() => BookMark(items._id)}>{clickBookmark}</button>
                     <button>Buy</button>
                 </div>
             </div>

@@ -78,7 +78,6 @@ const register = () => {
     console.log(formData)
 
 
-
     return (
         <div className="register-container">
             <h1>SignUp as {accountType}</h1>
@@ -91,7 +90,7 @@ const register = () => {
                     {suggestions.message?.length > 0 && (
                         <div className="suggestions" >
                             {suggestions.message.map((suggestion, index) => (
-                                <span key={index} className="suggestion-item" onClick={() => setFormData({ ...formData, address: suggestion })}>{suggestion}</span>
+                                <span key={index} className="suggestion-item" onClick={() => {setFormData({ ...formData, address: suggestion}) ; setSuggestions([])}}>{suggestion}</span>
                             ))}
                         </div>
                     )}

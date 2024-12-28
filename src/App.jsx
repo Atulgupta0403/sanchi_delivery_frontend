@@ -16,6 +16,7 @@ const Menu = React.lazy(() => import('./Components/Customer/Menu/menu'));
 const ForgetPassword = React.lazy(() => import('./Components/Customer/ForgetPassword/forgetPassword'));
 const Item = React.lazy(() => import('./Components/Customer/Item/item'))
 const LiveTracking = React.lazy(() => import("./Components/Customer/LiveTracking/liveTracking"))
+const Profile = React.lazy(() => import("./Components/Customer/Profile/profile"))
 
 const AddRestaurant = React.lazy(() => import("./Components/Restaurant/AddRestaurant/addRestaurant"))
 const AddMenu = React.lazy(() => import("./Components/Restaurant/AddMenu/addMenu"))
@@ -35,6 +36,7 @@ function App() {
           <Route element={<ForgetPassword />} path="/password/reset" />
           <Route element={<Item />} path='/item' />
           <Route element={<LiveTracking />} path='/liveTracking' />
+          <Route element={<Profile />} path='/profile' />
 
           <Route element={<AddRestaurant />} path='/addRestaurant' />
           <Route element={<AddMenu />} path='/addMenu' />
