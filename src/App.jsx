@@ -20,7 +20,7 @@ const Profile = React.lazy(() => import("./Components/Customer/Profile/profile")
 
 const AddRestaurant = React.lazy(() => import("./Components/Restaurant/AddRestaurant/addRestaurant"))
 const AddMenu = React.lazy(() => import("./Components/Restaurant/AddMenu/addMenu"))
-const SocketIo = React.lazy(() => import("./Components/Restaurant/Socketio/socketIo"))
+const RestaurantProfile = React.lazy(() => import("./Components/Restaurant/Profile/profile"))
 
 function App() {
 
@@ -40,7 +40,7 @@ function App() {
 
           <Route element={<AddRestaurant />} path='/addRestaurant' />
           <Route element={<AddMenu />} path='/addMenu' />
-          <Route element={<SocketIo />} path='/socketIo' />
+          <Route element={<RestaurantProfile />} path='/restaurantProfile' />
 
         </Routes>
       </Router>

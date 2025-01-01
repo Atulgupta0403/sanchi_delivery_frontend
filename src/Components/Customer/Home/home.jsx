@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import "../Home/home.css"
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Navbar from '../Navbar/navbar'
 
 const home = () => {
     const location = useLocation()
@@ -37,6 +38,7 @@ const home = () => {
 
     return (
         <div className='home-container'>
+            <Navbar />
             <div className="home">
                 <h1>RESTAURANTS</h1>
                 <div className="home-restaurant">

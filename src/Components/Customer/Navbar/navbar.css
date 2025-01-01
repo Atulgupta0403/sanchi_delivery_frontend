@@ -1,0 +1,10 @@
+svg{
+    font-size: 10px;
+    width: 30px;
+}
+
+.navbar{
+    padding: 5px;
+    display: flex;
+    /* justify-content: flex-end; */
+}

@@ -78,7 +78,7 @@ const addRestaurant = () => {
                     {suggestions.message?.length > 0 && (
                         <div className="suggestions" >
                             {suggestions.message.map((suggestion, index) => (
-                                <span key={index} className="suggestion-item" onClick={() => setFormData({ ...formData, location: suggestion })}>{suggestion}</span>
+                                <span key={index} className="suggestion-item" onClick={() => {setFormData({ ...formData, location: suggestion }) ; setSuggestions([])}}>{suggestion}</span>
                             ))}
                         </div>
                     )}

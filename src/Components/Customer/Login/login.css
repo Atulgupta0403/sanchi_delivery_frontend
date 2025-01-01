@@ -48,12 +48,16 @@ h1{
     cursor: pointer;
 }
 
-
 .login-register{
     margin-top: 20px;
     display:   flex;
     gap: 5px;
     font-size: 14px;
+}
+
+.forgetPassword{
+    cursor: pointer;
+    color: brown;
 }
 
 

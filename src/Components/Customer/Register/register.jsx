@@ -45,11 +45,6 @@ const register = () => {
     }
 
     
-
-    const handleForgetPassword = () =>{
-        window.location.href = "/password/reset"
-        console.log("handleForgetpassord")
-    } 
     const [suggestions, setSuggestions] = useState([]);
 
     const fetchSuggestions = async (input) => {
@@ -94,7 +89,6 @@ const register = () => {
                             ))}
                         </div>
                     )}
-                    <span className='forgetPassword' onClick={handleForgetPassword}>Forget password</span>
                     <button type='submit'>SignUp</button>
                 </form>
             </div>

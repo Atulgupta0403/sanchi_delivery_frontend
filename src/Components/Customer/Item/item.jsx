@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import "../Item/item.css"
 import axios from 'axios';
+import io from "socket.io-client"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 
 const item = () => {
 
@@ -22,7 +25,7 @@ const item = () => {
         })
             .then((response) => {
                 setItems(response.data.message)
-                console.log(response.data)
+                // console.log(response.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -52,11 +55,22 @@ const item = () => {
             })
     }
 
+    
+    const socket = (itemId) => {
+        const socketIo = io("http://localhost:8080")
+        
+        socketIo.emit("request" , {
+            token : token,
+            itemId : itemId 
+        })
+        // socketIo.emit("itemId" , itemId)
+    }
+
     return (
         <div className='item-main'>
             <div className="item-container">
                 <div className="image">
-                    <img src={items.image} alt="" />
+                    <img src={items.image} alt="item_img" />
                 </div>
                 <div className="description">
                     <div className="up">
@@ -71,7 +85,7 @@ const item = () => {
                 </div>
                 <div className="buy">
                     <button onClick={() => BookMark(items._id)}>{clickBookmark}</button>
-                    <button>Buy</button>
+                    <button onClick={() => socket(items._id)}>Buy</button>
                 </div>
             </div>
         </div>
