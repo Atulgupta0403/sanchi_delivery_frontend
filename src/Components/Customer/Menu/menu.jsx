@@ -14,7 +14,7 @@ const menu = () => {
     const { restaurant } = location.state || {};
 
     useEffect(() => {
-        axios.get("http://localhost:8080/menu", { params: { ids: restaurant.menu }  , headers: { 'Authorization': `${localStorage.getItem("token")}` } })
+        axios.get("https://foody.atulgupta.tech/menu", { params: { ids: restaurant.menu }  , headers: { 'Authorization': `${localStorage.getItem("token")}` } })
             .then((Response) => {
                 // console.log(Response.data.message)
                 setItems(Response.data.message)

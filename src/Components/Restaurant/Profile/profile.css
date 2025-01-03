@@ -1,0 +1,73 @@
+.res-pro{
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.up{
+    width: 80%;
+    background-color: blue;
+    height: 40vh;
+}
+
+.up img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+
+.res-pro span{
+    border: 2px solid black;
+    background-color: antiquewhite;
+    padding: 20px;
+    width: 100%;
+    color: black;
+    text-align: center;
+}
+
+.mark{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: cadetblue;
+    padding: 20px;
+    gap: 10px;
+    position: absolute;
+    bottom: 0;
+    
+
+}
+
+.mark button{
+    padding: 10px 15px ;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 22px;
+    font-weight: 600;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.green{
+    background-color: greenyellow;
+}
+
+
+.white{
+    background-color: white;
+}

@@ -18,7 +18,7 @@ const item = () => {
     
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/item/${id}`, {
+        axios.get(`https://foody.atulgupta.tech/item/${id}`, {
             headers: {
                 "Authorization": `${token}`
             }
@@ -34,9 +34,10 @@ const item = () => {
 
 
 
+
     const BookMark = async (Itemid) => {
         console.log(Itemid)
-        axios.post("http://localhost:8080/bookmark", { Itemid, Itemid }, {
+        axios.post("https://foody.atulgupta.tech/bookmark", { Itemid, Itemid }, {
             headers: { Authorization: `${token}` }
         })
             .then((response) => {
@@ -56,15 +57,31 @@ const item = () => {
     }
 
     
+    const socketIo = io("https://foody.atulgupta.tech")
     const socket = (itemId) => {
-        const socketIo = io("http://localhost:8080")
-        
         socketIo.emit("request" , {
             token : token,
             itemId : itemId 
         })
-        // socketIo.emit("itemId" , itemId)
     }
+
+
+    socketIo.on("accept" , (data) => {
+        // alert(data)
+        if(data){
+            console.log(data)
+            alert("Your order has been accepted")
+            
+        }
+    })
+    
+    socketIo.on("reject" , (data) => {
+        // alert(data)
+        if(data){
+            console.log(data)
+            alert("Your order has been cancelled")
+        }
+    })
 
     return (
         <div className='item-main'>

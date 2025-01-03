@@ -17,7 +17,7 @@ const profile = () => {
     
 
     useEffect(() => {
-        axios.get("http://localhost:8080/profile" , {headers : {
+        axios.get("https://foody.atulgupta.tech/profile" , {headers : {
             "Authorization" : `${token}`
         }})
         .then((Response) => {
@@ -41,7 +41,7 @@ const profile = () => {
 
 
     const bookmark = () => {
-        axios.get("http://localhost:8080/bookmark", {
+        axios.get("https://foody.atulgupta.tech/bookmark", {
             headers: {
                 "Authorization": `${token}`
             }
@@ -71,7 +71,7 @@ const profile = () => {
 
 
     const orders = () => {
-        axios.get("http://localhost:8080/orders", {
+        axios.get("https://foody.atulgupta.tech/orders", {
             headers: {
                 "Authorization": `${token}`
             }
@@ -97,7 +97,7 @@ const profile = () => {
     }
 
     const deleteAccount = () => {
-        axios.delete("http://localhost:8080/delete", {
+        axios.delete("https://foody.atulgupta.tech/delete", {
             headers: {
                 "Authorization": `${token}`
             }

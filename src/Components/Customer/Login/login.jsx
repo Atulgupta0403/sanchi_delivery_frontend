@@ -19,14 +19,14 @@ const login = () => {
 
     const loginHandler = (event) => {
         event.preventDefault();
-        axios.post("http://localhost:8080/login", formData)
+        axios.post("https://foody.atulgupta.tech/login", formData)
             .then((Response) => {
                 if (Response.status === 200) {
                     const token = Response.data.message;
                     console.log(Response.data)
                     localStorage.setItem("token", token);
                     if (Response.data.accountType === "Restaurant-owner") {
-                        navigate("/addRestaurant")
+                        navigate("/restaurantProfile")
                     }
                     else {
                         navigate("/home")

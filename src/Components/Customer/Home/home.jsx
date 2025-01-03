@@ -14,7 +14,7 @@ const home = () => {
     // console.log("token ", token);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/restaurant", {
+        axios.get("https://foody.atulgupta.tech/restaurant", {
             headers: {
                 "Authorization": `${token}`
             }

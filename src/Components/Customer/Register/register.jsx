@@ -27,7 +27,7 @@ const register = () => {
 
     const registerHandler = (event) => {
         event.preventDefault()
-        axios.post("http://localhost:8080/signup" , formData)
+        axios.post("https://foody.atulgupta.tech/signup" , formData)
             .then((response) => {
                 console.log(response.status)
                 if(response.status === 200){
@@ -49,7 +49,7 @@ const register = () => {
 
     const fetchSuggestions = async (input) => {
         try {
-            const response = await axios.get(`http://localhost:8080/getSuggestion/${input}`);
+            const response = await axios.get(`https://foody.atulgupta.tech/getSuggestion/${input}`);
             setSuggestions(response.data);
         } catch (error) {
             console.error("Error fetching suggestions:", error);

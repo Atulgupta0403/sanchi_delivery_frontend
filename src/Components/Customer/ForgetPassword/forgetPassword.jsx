@@ -15,7 +15,7 @@ const forgetPassword = () => {
 
     const handleForgetPassword = (event) =>{
         event.preventDefault()
-        axios.post("http://localhost:8080/password/reset" , email)
+        axios.post("https://foody.atulgupta.tech/password/reset" , email)
         .then((Response) => {
             console.log(Response.data)
             alert(Response.data.message)

@@ -21,7 +21,7 @@ const addMenu = () => {
 
   const addMenuHandler = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:8080/menu", formData, {
+    axios.post("https://foody.atulgupta.tech/menu", formData, {
       headers: {
         "Authorization": `${token}`
       }

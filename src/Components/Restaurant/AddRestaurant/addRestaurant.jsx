@@ -48,7 +48,7 @@ const addRestaurant = () => {
     const [suggestions , setSuggestions] = useState([]);
 
     const fetchSuggestion = async (input) => {
-        const response = await axios.get(`http://localhost:8080/getSuggestion/${input}`)
+        const response = await axios.get(`https://foody.atulgupta.tech/getSuggestion/${input}`)
         setSuggestions(response.data)    
     }
 
