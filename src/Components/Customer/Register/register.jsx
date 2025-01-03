@@ -66,9 +66,7 @@ const register = () => {
         }
     };
 
-    // const itemHandler((item) => {
-    //     console.log(item)
-    // })
+    console.log(suggestions)
 
     console.log(formData)
 
@@ -82,13 +80,13 @@ const register = () => {
                     <input type="email" placeholder='Email' name='email' value={formData.email} onChange={handleInputChange}/>
                     <input type="password" placeholder='Password' name='password' value={formData.password} onChange={handleInputChange}/>
                     <input type="text" placeholder='Address' name='address' value={formData.address} onChange={(e) => { handleInputChange(e); handleAddressChange(e); }}/>
-                    {suggestions.message?.length > 0 && (
+                    {/* {suggestions.message?.length > 0 && (
                         <div className="suggestions" >
                             {suggestions.message.map((suggestion, index) => (
                                 <span key={index} className="suggestion-item" onClick={() => {setFormData({ ...formData, address: suggestion}) ; setSuggestions([])}}>{suggestion}</span>
                             ))}
                         </div>
-                    )}
+                    )} */}
                     <button type='submit'>SignUp</button>
                 </form>
             </div>

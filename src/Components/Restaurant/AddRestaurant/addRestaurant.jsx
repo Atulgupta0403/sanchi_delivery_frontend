@@ -75,13 +75,13 @@ const addRestaurant = () => {
                     <input type="text" placeholder='Restaurant Cuisine' name='cuisine' onChange={inputHandle} />
                     <input type="text" placeholder='Restaurant Image Url' name='image' onChange={inputHandle} />
                     <input type="text" placeholder='Restaurant Location' value={formData.location} name='location' onChange={(e) => { inputHandle(e) ; handleAddressChange(e); }} />
-                    {suggestions.message?.length > 0 && (
+                    {/* {suggestions.message?.length > 0 && (
                         <div className="suggestions" >
                             {suggestions.message.map((suggestion, index) => (
                                 <span key={index} className="suggestion-item" onClick={() => {setFormData({ ...formData, location: suggestion }) ; setSuggestions([])}}>{suggestion}</span>
                             ))}
                         </div>
-                    )}
+                    )} */}
                     <button type="submit">Submit</button>
                 </form>
             </div>
