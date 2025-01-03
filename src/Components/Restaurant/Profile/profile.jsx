@@ -9,7 +9,7 @@ const profile = () => {
 
   const navigate = useNavigate()
 
-  const socket = io("https://foody.atulgupta.tech")
+  const socket = io("https://foody.atulgupta.tech/")
 
   const [userDetails, setUserDetails] = useState([]);
 
