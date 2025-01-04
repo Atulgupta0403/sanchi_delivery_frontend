@@ -21,6 +21,7 @@ const profile = () => {
             "Authorization" : `${token}`
         }})
         .then((Response) => {
+            console.log(Response)
             setProfileDetail(Response.data.message)
             // console.log(Response.data)
         })
