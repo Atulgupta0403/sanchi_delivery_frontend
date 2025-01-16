@@ -23,10 +23,13 @@ const login = () => {
             .then((Response) => {
                 if (Response.status === 200) {
                     const token = Response.data.message;
-                    console.log(Response.data)
+                    // console.log(Response.data)
                     localStorage.setItem("token", token);
                     if (Response.data.accountType === "Restaurant-owner") {
                         navigate("/restaurantProfile")
+                    }
+                    else if(Response.data.accountType === "Delivery-Partner"){
+                        navigate("/riderprofile")
                     }
                     else {
                         navigate("/home")

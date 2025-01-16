@@ -6,10 +6,10 @@ const containerStyle = {
     height: '400px',
 };
 
-const center = {
-    lat: -3.745,
-    lng: -38.523
-};
+// const center = {
+//     lat: -3.745,
+//     lng: -38.523
+// };
 
 const LiveTracking = () => {
     const [currentPosition, setCurrentPosition] = useState(center);
@@ -67,7 +67,6 @@ const LiveTracking = () => {
                 zoom={15}
             >
                 <Marker position={currentPosition} />
-                {/* {currentPosition && <Marker position={currentPosition} />} */}
 
             </GoogleMap>
         </LoadScript>

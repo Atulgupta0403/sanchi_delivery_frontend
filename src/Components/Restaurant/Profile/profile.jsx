@@ -2,35 +2,48 @@ import React, { useEffect, useState } from 'react'
 import io from "socket.io-client"
 import "../Profile/profile.css"
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 
 
 const profile = () => {
 
   const navigate = useNavigate()
-
-  const socket = io("https://foody.atulgupta.tech/")
-
+  const token = localStorage.getItem("token")
+  
   const [userDetails, setUserDetails] = useState([]);
+  const [restaurantDetails , setRestaurantDetails] = useState([])
+
+  const socket = io("http://localhost:8080/")
+  socket.on("request", (data) => {
+    setUserDetails(data)
+  })
 
 
   useEffect(() => {
-    socket.on("request", (data) => {
-      const { address } = data;
-      setUserDetails(address)
+    axios.get("http://localhost:8080/restaurantProfile" , {headers : 
+      {"Authorization" : `${token}`}
+    }) 
+    .then((response) => {
+      console.log(response.data.message)
+      setRestaurantDetails(response.data.message)
     })
-  }, [])
+    .catch((err) => {
+      console.log("Something went wrong")
+      console.log(err)
+    })
+  },[])
 
 
   const accept = () => {
     socket.emit("accept", "accepted")
+    setUserDetails([])
   }
 
   const reject = () => {
     socket.emit("reject", "rejected")
+    setUserDetails([])
   }
-
-  console.log(userDetails)
 
   const restaurant = () => {
     navigate("/addRestaurant")
@@ -40,22 +53,40 @@ const profile = () => {
     navigate("/addmenu")
   }
 
+  const items = (restaurantId) => {
+    navigate("/items" , { state : restaurantId})
+  }
+
+  // console.log(userDetails)
 
   return (
     <div className='res-pro'>
-      <h1>Restaurant profile</h1>
+      <h1>{restaurantDetails?.restaurantName? restaurantDetails.restaurantName : "restaurantName"} </h1>
       <div className="up">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D" alt="" />
+        <img src={restaurantDetails?.image} alt="" />
       </div>
+      <p>{restaurantDetails?.cuisine}</p>
       <div className="middle">
 
         <span onClick={restaurant}>Add restaurant</span>
         <span onClick={menu}>Add menu</span>
+        <span onClick={() => (items(restaurantDetails._id))}>All Items</span>
       </div>
 
-      {userDetails.length > 0 && (
+      {userDetails.address !== undefined && (
         <div className="mark">
-          <p>Deliver to {userDetails}</p>
+          <p>Order For</p>
+          <div className="menu-items">
+            <img src={userDetails.item.image} alt="" />
+            <div className="menu-description" >
+              <p>{userDetails.item.itemName}</p>
+              <p>{userDetails.item.category}</p>
+              <p>₹{userDetails.item.price}</p>
+            </div>
+          </div>
+
+          <p>Deliver to {userDetails.address}</p>
+          {/* <p>Deliver to {userDetails.item.itemName}</p> */}
           <button className='green' onClick={() => accept()}>Accept</button>
           <button className='white' onClick={() => reject()}>Cancel</button>
         </div>

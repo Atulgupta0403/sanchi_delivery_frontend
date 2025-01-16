@@ -11,10 +11,11 @@ const menu = () => {
     const location = useLocation();
 
     const [items, setItems] = useState([])
-    const { restaurant } = location.state || {};
+    const { restaurantId } = location.state || {};
+    // console.log(restaurantId)
 
     useEffect(() => {
-        axios.get("https://foody.atulgupta.tech/menu", { params: { ids: restaurant.menu }  , headers: { 'Authorization': `${localStorage.getItem("token")}` } })
+        axios.get("http://localhost:8080/menu", { params: { ids: restaurantId }  , headers: { 'Authorization': `${localStorage.getItem("token")}` } })
             .then((Response) => {
                 // console.log(Response.data.message)
                 setItems(Response.data.message)
@@ -30,6 +31,8 @@ const menu = () => {
         navigate("/item", { state: id })
     }
 
+    // console.log(items)
+
     return (
         <div className='menu'>
             <h1>menu</h1>
@@ -40,7 +43,7 @@ const menu = () => {
                         <div className="menu-description" >
                             <p>{item.itemName}</p>
                             <p>{item.category}</p>
-                            <p>{item.price}</p>
+                            <p>₹{item.price}</p>
                         </div>
                     </div>
                 ))}

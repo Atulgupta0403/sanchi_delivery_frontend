@@ -27,9 +27,9 @@ const register = () => {
 
     const registerHandler = (event) => {
         event.preventDefault()
-        axios.post("https://foody.atulgupta.tech/signup" , formData)
+        axios.post("http://localhost:8080/signup" , formData)
             .then((response) => {
-                console.log(response.status)
+                // console.log(response.status)
                 if(response.status === 200){
                     alert(response.data.message)
                     window.location.href = "/login"
@@ -66,9 +66,9 @@ const register = () => {
         }
     };
 
-    console.log(suggestions)
+    // console.log(suggestions)
 
-    console.log(formData)
+    // console.log(formData)
 
 
     return (

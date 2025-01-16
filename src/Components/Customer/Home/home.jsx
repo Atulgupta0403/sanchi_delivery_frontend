@@ -32,8 +32,10 @@ const home = () => {
             });
     }, []);
 
-    const handleClick = (restaurant) => {
-        navigate('/menu', { state: { restaurant } });
+    // console.log(restaurants)
+
+    const handleClick = (restaurantId) => {
+        navigate('/menu', { state: { restaurantId } });
     };
 
     return (
@@ -43,7 +45,7 @@ const home = () => {
                 <h1>RESTAURANTS</h1>
                 <div className="home-restaurant">
                     {restaurants.map((restaurant) => {
-                        return <div className="home-items" key={restaurant._id} onClick={() => (handleClick(restaurant))}>
+                        return <div className="home-items" key={restaurant._id} onClick={() => (handleClick(restaurant._id))}>
                             <img src={restaurant.image} alt="" />
                             <div className="home-details">
                                 <div className="home-name">
