@@ -57,7 +57,7 @@ const item = () => {
     }
 
     
-    const socketIo = io("http://localhost:8080")
+    const socketIo = io("https://foody.atulgupta.tech")
     const socket = (itemId) => {
         socketIo.emit("request" , {
             token : token,

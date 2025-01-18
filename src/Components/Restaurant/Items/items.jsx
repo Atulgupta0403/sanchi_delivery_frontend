@@ -12,7 +12,7 @@ const items = () => {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:8080/menu", {
+        axios.get("https://foody.atulgupta.tech/menu", {
             params: { ids: restaurantId }, headers: {
                 "Authorization": `${token}`
             }

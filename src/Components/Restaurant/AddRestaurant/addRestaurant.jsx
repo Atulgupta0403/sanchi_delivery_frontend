@@ -23,7 +23,7 @@ const addRestaurant = () => {
 
     const addRestaurantHandler = (event) => {
         event.preventDefault();
-        axios.post("http://localhost:8080/restaurant", formData, {
+        axios.post("https://foody.atulgupta.tech/restaurant", formData, {
             headers: { "Authorization": `${token}` }
         })
             .then((response) => {

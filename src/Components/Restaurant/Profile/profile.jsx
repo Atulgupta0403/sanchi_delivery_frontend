@@ -14,14 +14,14 @@ const profile = () => {
   const [userDetails, setUserDetails] = useState([]);
   const [restaurantDetails , setRestaurantDetails] = useState([])
 
-  const socket = io("http://localhost:8080/")
+  const socket = io("https://foody.atulgupta.tech/")
   socket.on("request", (data) => {
     setUserDetails(data)
   })
 
 
   useEffect(() => {
-    axios.get("http://localhost:8080/restaurantProfile" , {headers : 
+    axios.get("https://foody.atulgupta.tech/restaurantProfile" , {headers : 
       {"Authorization" : `${token}`}
     }) 
     .then((response) => {

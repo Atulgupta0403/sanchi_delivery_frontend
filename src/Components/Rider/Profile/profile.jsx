@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 
 const profile = () => {
 
-  const socket = io("http://localhost:8080")
+  const socket = io("https://foody.atulgupta.tech")
   const [userDetails, setUserDetails] = useState([]);
 
   useEffect(() => {
