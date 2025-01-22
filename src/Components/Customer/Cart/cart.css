@@ -26,31 +26,31 @@
 }
 
 
-.menu-items{
+.cart-items{
     display: flex;
     align-items: center;
     gap: 20px;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     background-color: rgb(69, 74, 74);
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
 }
 
-.menu-items p{
+.cart-items p{
     font-size: 18px;
     text-transform: capitalize;
     background-color: rgb(69, 74, 74);
 }
 
-.menu-items img{
+.cart-items img{
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 20%;
 }
 
-.menu-description{
+.cart-description{
     display: flex;
     flex-direction: column;
 }

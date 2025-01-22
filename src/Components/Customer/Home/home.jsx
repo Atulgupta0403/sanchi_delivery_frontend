@@ -11,7 +11,6 @@ const home = () => {
 
     const [restaurants, setRestaurants] = useState([]);
     const token = localStorage.getItem("token");
-    // console.log("token ", token);
 
     useEffect(() => {
         axios.get("https://foody.atulgupta.tech/restaurant", {
@@ -20,7 +19,6 @@ const home = () => {
             }
         })
             .then((response) => {
-                // console.log(response.data)
                 if (response.data.message === "UnAuthorized") {
                     navigate("/login");
                 }
@@ -37,7 +35,7 @@ const home = () => {
             "Authorization" : `${token}`
         }})
         .then((Response) => {
-            const length = Response.data.message.cartItems.length;
+            const length = Response?.data?.message?.cartItems?.length || 0;
             localStorage.setItem("cartItem" , length)
         })
         .catch((error) => {
@@ -45,8 +43,6 @@ const home = () => {
             alert("Something went wrong")
         })
     },[])
-
-    // console.log(restaurants)
 
     const handleClick = (restaurantId) => {
         navigate('/menu', { state: { restaurantId } });
