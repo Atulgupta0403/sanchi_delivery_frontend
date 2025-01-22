@@ -9,31 +9,35 @@ const profile = () => {
     const token = localStorage.getItem("token")
     const [bookmarks, setBookmarks] = useState([])
     const [order, setOrder] = useState([])
+    const [likeItem, setLikeItem] = useState([])
     const [clickBookmark, setClickBookmark] = useState(true)
     const [clickOrder, setClickOrder] = useState(true)
+    const [clickLike, setClickLike] = useState(true)
 
 
     const [profileDetail, setProfileDetail] = useState()
-    
+
 
     useEffect(() => {
-        axios.get("https://foody.atulgupta.tech/profile" , {headers : {
-            "Authorization" : `${token}`
-        }})
-        .then((Response) => {
-            console.log(Response)
-            setProfileDetail(Response.data.message)
-            // console.log(Response.data)
+        axios.get("https://foody.atulgupta.tech/profile", {
+            headers: {
+                "Authorization": `${token}`
+            }
         })
-        .catch((error) => {
-            console.log(error)
-            alert("Something went wrong")
-        })
-    },[])
+            .then((Response) => {
+                console.log(Response)
+                setProfileDetail(Response.data.message)
+                console.log(Response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+                alert("Something went wrong")
+            })
+    }, [])
 
     // console.log("profileDetail  " , profileDetail?.email)
     // if(profileDetail)
-    
+
 
     const item = (id) => {
         // console.log(id)
@@ -51,16 +55,14 @@ const profile = () => {
                 if (Response.status === 200 && clickBookmark === true) {
                     setBookmarks(Response.data)
                     setClickBookmark(false)
-                    console.log("if");
                 }
                 else if (clickBookmark === false) {
-                    console.log("else if")
                     setBookmarks([])
                     setClickBookmark(true)
                 }
                 else {
                     alert(Response.data.message)
-                    
+
                 }
             })
             .catch((error) => {
@@ -68,7 +70,32 @@ const profile = () => {
             })
     }
 
-    // console.log(bookmarks)
+    const like = () => {
+        axios.get("http://localhost:8080/like", {
+            headers: {
+                "Authorization": `${token}`
+            }
+        })
+            .then((response) => {
+                if (response.status === 200 && clickLike === true) {
+                    setLikeItem(response.data.message)
+                    setClickLike(false)
+                }
+                else if (clickLike === false) {
+                    setLikeItem([])
+                    setClickLike(true)
+                }
+                else {
+                    alert(response.data.message)
+                }
+            })
+            .catch((error) => {
+                console.log("Something went wrong")
+                console.log(error)
+            })
+    }
+
+    console.log(likeItem)
 
 
     const orders = () => {
@@ -117,7 +144,7 @@ const profile = () => {
                 console.log(error)
             })
     }
-    
+
 
 
     return (
@@ -141,7 +168,7 @@ const profile = () => {
                                 <p>{elem?.category}</p>
                                 <p>₹{elem?.price}</p>
                             </div>
-                        )) || <h1>hello</h1>}
+                        ))}
                     </div>
                 )}
                 <p onClick={orders}>Orders</p>
@@ -158,7 +185,19 @@ const profile = () => {
                         ))}
                     </div>
                 )}
-                <p>Liked Dish</p>
+                <p onClick={like}>Liked Dish</p>
+                {likeItem?.length > 0 && (
+                    <div className="bookmarks">
+                        {likeItem.map((elem, index) => (
+                            <div className="bookmark" key={index} onClick={() => item(elem._id)}>
+                                <img src={elem?.image} alt="" />
+                                <p>{elem?.itemName}</p>
+                                <p>{elem?.category}</p>
+                                <p>₹{elem?.price}</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <hr />
             </div>
             <hr />

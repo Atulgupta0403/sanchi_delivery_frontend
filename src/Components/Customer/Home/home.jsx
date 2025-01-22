@@ -32,6 +32,20 @@ const home = () => {
             });
     }, []);
 
+    useEffect(() => {
+        axios.get("https://foody.atulgupta.tech/profile" , {headers : {
+            "Authorization" : `${token}`
+        }})
+        .then((Response) => {
+            const length = Response.data.message.cartItems.length;
+            localStorage.setItem("cartItem" , length)
+        })
+        .catch((error) => {
+            console.log(error)
+            alert("Something went wrong")
+        })
+    },[])
+
     // console.log(restaurants)
 
     const handleClick = (restaurantId) => {

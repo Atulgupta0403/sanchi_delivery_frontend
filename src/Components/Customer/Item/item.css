@@ -1,7 +1,7 @@
 .item-main{
     width: 100vw;
     /* padding: 5px; */
-    height: 100vh;
+    min-height: 100vh;
     background-color: black;
 }
 
@@ -43,6 +43,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 80px;
 }
 
 .buy button{
@@ -52,6 +53,13 @@
     background-color: aquamarine;
     cursor: pointer;
     font-weight: 600;
+}
+
+.image svg{
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    /* background-color: red; */
 }
 
 

@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import "../Menu/menu.css"
 
+import Navbar from '../Navbar/navbar';
+
 
 const menu = () => {
 
@@ -35,6 +37,7 @@ const menu = () => {
 
     return (
         <div className='menu'>
+            <Navbar />
             <h1>menu</h1>
             <div className="menu-container">
                 {items.map((item) => (
